@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import { ArrowRight, Users, Target, Lightbulb } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Layout } from "@/components/layout/Layout";
 import aboutProcess from "@/assets/about-process.jpg";
 import heroMain from "@/assets/hero-main.jpg";
 
@@ -32,7 +32,7 @@ const stats = [
 
 export default function About() {
   return (
-    <Layout>
+    <>
       {/* Hero */}
       <section className="py-16 lg:py-24 bg-muted">
         <div className="container-custom">
@@ -53,7 +53,12 @@ export default function About() {
       <section className="py-16 lg:py-24">
         <div className="container-custom">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            <div>
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
               <h2 className="text-3xl lg:text-4xl font-bold mb-6">Our Story</h2>
               <div className="space-y-4 text-muted-foreground">
                 <p>
@@ -78,7 +83,7 @@ export default function About() {
                   See Our Process <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
-            </div>
+            </motion.div>
             <div className="relative">
               <img
                 src={heroMain}
@@ -91,14 +96,20 @@ export default function About() {
       </section>
 
       {/* Process */}
-      <section className="py-16 lg:py-24 bg-primary text-primary-foreground">
+      <section className="py-16 lg:py-24 bg-neutral-900 text-white">
         <div className="container-custom">
-          <div className="text-center mb-12">
+          <motion.div
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
             <h2 className="text-3xl lg:text-4xl font-bold mb-4">How It Works</h2>
-            <p className="text-primary-foreground/70 max-w-2xl mx-auto">
+            <p className="text-gray-300 max-w-2xl mx-auto">
               Our circular approach to fashion ensures nothing goes to waste
             </p>
-          </div>
+          </motion.div>
 
           <div className="grid md:grid-cols-4 gap-8">
             {[
@@ -123,11 +134,18 @@ export default function About() {
                 description: "You get unique, sustainable style at a fraction of original cost",
               },
             ].map((item, index) => (
-              <div key={item.step} className="text-center">
+              <motion.div
+                key={item.step}
+                className="text-center"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
                 <div className="text-5xl font-bold text-accent mb-4">{item.step}</div>
                 <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
-                <p className="text-primary-foreground/70">{item.description}</p>
-              </div>
+                <p className="text-gray-400">{item.description}</p>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -214,12 +232,12 @@ export default function About() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 lg:py-24 bg-primary text-primary-foreground">
+      <section className="py-16 lg:py-24 bg-neutral-900 text-white">
         <div className="container-custom text-center">
           <h2 className="text-3xl lg:text-4xl font-bold mb-4">
             Ready to Make a Difference?
           </h2>
-          <p className="text-primary-foreground/70 max-w-xl mx-auto mb-8">
+          <p className="text-gray-300 max-w-xl mx-auto mb-8">
             Every purchase supports sustainable fashion and reduces textile waste.
             Explore our collection today.
           </p>
@@ -230,6 +248,6 @@ export default function About() {
           </Button>
         </div>
       </section>
-    </Layout>
+    </>
   );
 }

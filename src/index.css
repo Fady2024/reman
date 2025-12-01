@@ -45,24 +45,24 @@
     --olive: 80 25% 35%;
     --olive-light: 80 20% 45%;
     --olive-dark: 80 30% 25%;
-    
+
     --charcoal: 0 0% 12%;
     --charcoal-light: 0 0% 20%;
-    
+
     --warm-white: 40 20% 98%;
     --warm-grey: 30 5% 75%;
-    
+
     /* Gradients */
     --gradient-hero: linear-gradient(135deg, hsl(0 0% 8%) 0%, hsl(0 0% 18%) 100%);
     --gradient-card: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(30 5% 97%) 100%);
     --gradient-olive: linear-gradient(135deg, hsl(80 25% 35%) 0%, hsl(80 30% 28%) 100%);
-    
+
     /* Shadows */
     --shadow-sm: 0 2px 8px -2px hsl(0 0% 0% / 0.08);
     --shadow-md: 0 8px 24px -8px hsl(0 0% 0% / 0.12);
     --shadow-lg: 0 16px 48px -12px hsl(0 0% 0% / 0.15);
     --shadow-hover: 0 12px 32px -8px hsl(0 0% 0% / 0.18);
-    
+
     /* Transitions */
     --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
     --transition-base: 300ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -128,7 +128,12 @@
     font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
     @apply font-semibold tracking-tight;
   }
@@ -187,6 +192,7 @@
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -197,6 +203,7 @@
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -208,6 +215,7 @@
     opacity: 0;
     transform: translateX(-30px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -219,6 +227,7 @@
     opacity: 0;
     transform: scale(0.95);
   }
+
   to {
     opacity: 1;
     transform: scale(1);

@@ -1,9 +1,9 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Layout } from "@/components/layout/Layout";
 import { useToast } from "@/hooks/use-toast";
 
 const contactInfo = [
@@ -73,17 +73,22 @@ export default function Contact() {
   };
 
   return (
-    <Layout>
+    <>
       {/* Header */}
       <section className="py-16 lg:py-24 bg-muted">
         <div className="container-custom">
-          <div className="max-w-2xl">
+          <motion.div
+            className="max-w-2xl"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
             <h1 className="text-4xl lg:text-5xl font-bold mb-4">Get in Touch</h1>
             <p className="text-xl text-muted-foreground">
               Have questions about our products, sustainability practices, or anything else?
               We'd love to hear from you.
             </p>
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -92,7 +97,13 @@ export default function Contact() {
         <div className="container-custom">
           <div className="grid lg:grid-cols-3 gap-12 lg:gap-16">
             {/* Form */}
-            <div className="lg:col-span-2">
+            <motion.div
+              className="lg:col-span-2"
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
               <h2 className="text-2xl font-bold mb-6">Send us a message</h2>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid sm:grid-cols-2 gap-4">
@@ -171,10 +182,15 @@ export default function Contact() {
                   )}
                 </Button>
               </form>
-            </div>
+            </motion.div>
 
             {/* Contact Info */}
-            <div>
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
               <h2 className="text-2xl font-bold mb-6">Contact Info</h2>
               <div className="space-y-6">
                 {contactInfo.map((info) => (
@@ -211,7 +227,7 @@ export default function Contact() {
                   ))}
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -219,19 +235,32 @@ export default function Contact() {
       {/* FAQ */}
       <section className="py-16 lg:py-24 bg-muted">
         <div className="container-custom">
-          <h2 className="text-3xl font-bold mb-10 text-center">
+          <motion.h2
+            className="text-3xl font-bold mb-10 text-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
             Frequently Asked Questions
-          </h2>
+          </motion.h2>
           <div className="max-w-3xl mx-auto grid gap-6">
-            {faqs.map((faq) => (
-              <div key={faq.question} className="bg-card p-6 rounded-lg">
+            {faqs.map((faq, index) => (
+              <motion.div
+                key={faq.question}
+                className="bg-card p-6 rounded-lg"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
                 <h3 className="font-semibold mb-2">{faq.question}</h3>
                 <p className="text-muted-foreground">{faq.answer}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
-    </Layout>
+    </>
   );
 }

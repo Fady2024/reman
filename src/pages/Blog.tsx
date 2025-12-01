@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import { ArrowRight, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Layout } from "@/components/layout/Layout";
 import product1 from "@/assets/product-1.jpg";
 import product2 from "@/assets/product-2.jpg";
 import product3 from "@/assets/product-3.jpg";
@@ -71,14 +71,20 @@ export default function Blog() {
   const regularPosts = blogPosts.slice(1);
 
   return (
-    <Layout>
+    <>
       {/* Header */}
       <section className="py-12 lg:py-16 bg-muted">
         <div className="container-custom">
-          <h1 className="text-3xl lg:text-4xl font-bold mb-2">The REMAN Journal</h1>
-          <p className="text-muted-foreground">
-            Insights on sustainable fashion, style tips, and our journey
-          </p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <h1 className="text-3xl lg:text-4xl font-bold mb-2">The REMAN Journal</h1>
+            <p className="text-muted-foreground">
+              Insights on sustainable fashion, style tips, and our journey
+            </p>
+          </motion.div>
         </div>
       </section>
 
@@ -101,7 +107,13 @@ export default function Blog() {
       {/* Featured Post */}
       <section className="py-12 lg:py-16">
         <div className="container-custom">
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          <motion.div
+            className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
             <div className="relative aspect-[4/3] rounded-lg overflow-hidden">
               <img
                 src={featuredPost.image}
@@ -135,7 +147,7 @@ export default function Blog() {
                 </Link>
               </Button>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -144,8 +156,15 @@ export default function Blog() {
         <div className="container-custom">
           <h2 className="text-2xl font-bold mb-8">Latest Articles</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {regularPosts.map((post) => (
-              <article key={post.id} className="group">
+            {regularPosts.map((post, index) => (
+              <motion.article
+                key={post.id}
+                className="group"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
                 <Link to={`/blog/${post.id}`}>
                   <div className="aspect-[4/3] rounded-lg overflow-hidden mb-4">
                     <img
@@ -173,7 +192,7 @@ export default function Blog() {
                     {post.readTime}
                   </span>
                 </div>
-              </article>
+              </motion.article>
             ))}
           </div>
 
@@ -186,26 +205,33 @@ export default function Blog() {
       </section>
 
       {/* Newsletter */}
-      <section className="py-16 lg:py-20 bg-primary text-primary-foreground">
+      <section className="py-16 lg:py-20 bg-neutral-900 text-white">
         <div className="container-custom text-center">
-          <h2 className="text-2xl lg:text-3xl font-bold mb-4">
-            Stay Updated
-          </h2>
-          <p className="text-primary-foreground/70 max-w-md mx-auto mb-6">
-            Get the latest articles on sustainable fashion, styling tips, and exclusive offers.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-3 justify-center max-w-md mx-auto">
-            <input
-              type="email"
-              placeholder="Enter your email"
-              className="flex-1 px-4 py-3 rounded-md bg-primary-foreground/10 border border-primary-foreground/20 text-primary-foreground placeholder:text-primary-foreground/50 focus:outline-none focus:ring-2 focus:ring-accent"
-            />
-            <Button variant="accent" size="lg">
-              Subscribe
-            </Button>
-          </div>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <h2 className="text-2xl lg:text-3xl font-bold mb-4">
+              Stay Updated
+            </h2>
+            <p className="text-gray-300 max-w-md mx-auto mb-6">
+              Get the latest articles on sustainable fashion, styling tips, and exclusive offers.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center max-w-md mx-auto">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="flex-1 px-4 py-3 rounded-md bg-white/10 border border-white/20 text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-accent"
+              />
+              <Button variant="accent" size="lg">
+                Subscribe
+              </Button>
+            </div>
+          </motion.div>
         </div>
       </section>
-    </Layout>
+    </>
   );
 }
