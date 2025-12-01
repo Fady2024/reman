@@ -10,7 +10,7 @@
 
 **Premium recycled menswear. Zero waste, maximum style.**
 
-[Live Demo](https://reman.co) • [Report Bug](https://github.com/Fady2024/reman/issues) • [Request Feature](https://github.com/Fady2024/reman/issues)
+[Live Demo](https://reman-pi.vercel.app/) • [Report Bug](https://github.com/Fady2024/reman/issues) • [Request Feature](https://github.com/Fady2024/reman/issues)
 
 </div>
 
@@ -335,8 +335,8 @@ This project is licensed under the MIT License.
 
 ---
 
-**📧 Email:** [hello@reman.co](mailto:hello@reman.co)  
-**📱 Phone:** [+20 111 111 1111](tel:+201111111111)  
+**📧 Email:** [fadygerges2023@gmail.com](mailto:fadygerges2023@gmail.com)  
+
 **📍 Location:** Cairo, Egypt
 
 ---
